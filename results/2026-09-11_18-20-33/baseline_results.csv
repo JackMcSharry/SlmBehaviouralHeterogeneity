@@ -1,0 +1,11 @@
+participant,raw_response,parsed_response,valid
+21 year old university student,0,0,True
+55 year old secondary school teacher,0,0,True
+32 year old software engineer,1,1,True
+68 year old retired nurse,1,1,True
+40 year old small business owner,0,0,True
+24 year old unemployed graduate,0,0,True
+47 year old construction worker,1,1,True
+36 year old doctor,0,0,True
+72 year old retired accountant,1,1,True
+29 year old retail worker,0,0,True

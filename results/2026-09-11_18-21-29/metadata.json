@@ -1,0 +1,13 @@
+{
+    "experiment_name": "baseline_participants",
+    "timestamp": "2026-09-11_18-21-29",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "participant_config": "config/participants.json",
+    "generation": {
+        "do_sample": false,
+        "max_new_tokens": 10
+    },
+    "device": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "torch_version": "2.14.0+cu130",
+    "transformers_version": "5.17.0"
+}
