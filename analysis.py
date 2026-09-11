@@ -2,6 +2,9 @@ import argparse
 import csv
 from pathlib import Path
 import statistics
+from collections import Counter
+
+import matplotlib.pyplot as plt
 
 
 parser = argparse.ArgumentParser(
@@ -36,3 +39,21 @@ print(f"Median: {statistics.median(valid_responses):.2f}")
 print(f"Variance: {statistics.pvariance(valid_responses):.2f}")
 print(f"Standard deviation: {statistics.pstdev(valid_responses):.2f}")
 print(f"Unique responses: {len(set(valid_responses))}")
+
+# Generate and save a bar chart of the response distribution
+response_values = list(range(11))
+counts = Counter(valid_responses)
+frequencies = [counts[value] for value in response_values]
+
+plt.bar(response_values, frequencies)
+plt.xticks(response_values)
+plt.xlabel("Amount given (£)")
+plt.ylabel("Number of participants")
+plt.title("Baseline response distribution")
+plt.tight_layout()
+
+plot_path = args.results_file.parent / "response_distribution.png"
+plt.savefig(plot_path, dpi=150)
+plt.close()
+
+print(f"Plot saved to: {plot_path}")
