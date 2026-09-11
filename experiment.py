@@ -31,11 +31,11 @@ for participant in participants:
         {
             "role": "user",
             "content": (
-                f"You are a {participant}. "
-                "You are participating in a behavioural experiment. "
-                "You receive £10 and may give any whole number of pounds "
-                "from £0 to £10 to an anonymous participant. "
-                "How much do you give? Reply with only the number."
+                f"You are simulating this participant: {participant}. "
+                "Behavioural task: You have £10. Decide how many whole pounds to give "
+                "to an anonymous participant. "
+                "Valid responses are: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10. "
+                "Return exactly one valid integer and nothing else."
             )
         }
     ]
