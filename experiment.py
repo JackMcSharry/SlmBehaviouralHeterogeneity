@@ -44,7 +44,6 @@ for participant in participants:
         return_tensors="pt"
     ).to(model.device)
 
-    # Inference does not require gradients, reducing memory use
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
@@ -52,3 +51,13 @@ for participant in participants:
             # Disabled sampling for deterministic output
             do_sample=False
         )
+
+    # Decode only newly generated tokens (excludes original prompt)
+    new_tokens = outputs[0][inputs["input_ids"].shape[1]:]
+
+    response = tokenizer.decode(
+        new_tokens,
+        skip_special_tokens=True
+    )
+
+    print(f"{participant}: {response}")
