@@ -19,8 +19,7 @@ python -m venv .venv
 Install the dependencies:
 
 ```powershell
-python -m pip install torch --index-url https://download.pytorch.org/whl/cu130
-python -m pip install numpy transformers accelerate matplotlib
+python -m pip install -r requirements.txt
 ```
 
 ## Run the experiment
