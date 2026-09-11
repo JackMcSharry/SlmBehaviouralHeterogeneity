@@ -7,9 +7,14 @@ import torch
 import transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+# Load experiment config from experiment.json
+with open("config/experiment.json", "r", encoding="utf-8") as file:
+    experiment_config = json.load(file)
 
-# Load participants from config JSON file
+MODEL_NAME = experiment_config["model"]
+generation_config = experiment_config["generation"]
+
+# Load participants from participants.json file
 with open("config/participants.json", "r", encoding="utf-8") as file:
     participants = json.load(file)
 
@@ -54,9 +59,8 @@ for participant in participants:
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
-            max_new_tokens=10,
-            # Disabled sampling for deterministic output
-            do_sample=False
+            max_new_tokens=generation_config["max_new_tokens"],
+            do_sample=generation_config["do_sample"]
         )
 
     # Decode only newly generated tokens (excludes original prompt)
